@@ -1,0 +1,24 @@
+<%-include('../includes/head.ejs')%>
+</head>
+<body>
+    <%-include('../includes/navigation.ejs')%>
+    <main>
+        <%if(prods.length>0){%>
+            <%for(let product of prods){%>
+       <h1><%=product.title%></h1>
+       <img src="/<%=product.imageUrl%>" alt="<%=product.title%>">
+       <h2>$<%=product.price%></h2>
+       <p><%=product.description%></p>
+       
+<a href="/edit-product/<%=product._id%>?edit=true">Edit</a>
+       <form method="post" action="/delete-product">
+        <input type="hidden" value="<%=product._id%>" name="productId">
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+           <button>Delete</button>
+        </form>
+       
+       <%}%>
+       <%}%>
+        
+    </main>
+<%-include('../includes/end.ejs')%>

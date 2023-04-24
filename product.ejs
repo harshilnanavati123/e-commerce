@@ -1,0 +1,14 @@
+<%-include('../includes/head.ejs')%>
+</head>
+<body>
+  <%-include('../includes/navigation.ejs')%>
+    <main>
+        <form action="/add-product" method="post">
+            <input type="text" name="title">
+            <input type="text" name="ImageUrl">
+            <input type="number" name="price">
+            <textarea rows="5" name="description"></textarea>
+            <button type="submit">Add Product</button>
+        </form>
+    </main>
+<%-include('../includes/end.ejs')%>
