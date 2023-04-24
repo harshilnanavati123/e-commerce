@@ -1,0 +1,25 @@
+<%-include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <%-include('../includes/navigation.ejs')%>
+<main>
+    <div><%=errorMessage%></div>
+                <form action="/login" method="post" novalidate>
+                    <div>
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" value="<%=oldInput.email%>">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" value="<%=oldInput.password%>">
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button type="submit">
+                                Login
+                            </button>
+                </form>
+                <a href="reset">Reset Password</a>
+            </main>
+
+            <%-include('../includes/end.ejs')%>
