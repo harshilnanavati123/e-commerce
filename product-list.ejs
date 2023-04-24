@@ -1,0 +1,31 @@
+<%-include('../includes/head.ejs')%>
+</head>
+<body>
+    <%-include('../includes/navigation.ejs')%>
+    <main>
+        <%if(prods.length>0){%>
+            <%for(let product of prods){%>
+       <h1><%=product.title%></h1>
+       <img src="/<%=product.imageUrl%>" alt="<%=product.title%>">
+       <h2>$<%=product.price%></h2>
+       <p><%=product.description%></p>
+       <a href="/product-list/<%=product._id%>">Details</a>
+       <form action="/cart" method="post" >
+        <button type="submit">Add To Cart</button>
+        <input type="hidden" name="productId" value="<%=product._id%>">
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+    </form>
+       <%}%>
+       <%-include('../includes/pagination.ejs',{
+        currentPage:currentPage,
+        nextPage:nextPage,
+        previousPage:previousPage,
+        lastPage:lastPage,
+        hasNext:hasNext,
+        hasPrevious:hasPrevious
+    } )%>
+       <%}else{%>
+        <h1>No Products</h1>
+        <%}%>
+    </main>
+<%-include('../includes/end.ejs')%>
